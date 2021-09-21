@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
@@ -41,6 +41,8 @@
             document.getElementById("txtpais").value = "";
             document.getElementById("sexoId").value = "";
             document.getElementById("tx_mensagem").value = "";
+            document.getElementById("txsim").checked = false;
+            document.getElementById("txnao").checked = false;
         }
     </script>
     <style>
@@ -111,15 +113,145 @@
                 <option value="nInformado">Não informar</option>
             </select>
             <h3>Possui residência propria:</h3>
-            <input type="radio" name="option" value="sim" />Sim<br />
-            <input type="radio" name="option" value="nao" />Não<br />
-            <br />
+            <input type="radio" name="option" value="sim" id="txsim" />Sim<br />
+            <input type="radio" name="option" value="nao" id="txnao" />Não<br />
+            <br/>
             <h3>Como você gostaria que fosse o seu imóvel:</h3>
             <textarea name="tx_mensagem" id="tx_mensagem" rows="5" cols="40">
             </textarea>  
-             <br />
+             <br/>
             <input type="button" value="Enviar" onclick="verificar()" />
             <input type="button" value="Limpar" onclick="limpaCampos()">
+        </form>
+    </div>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=10, initial-scale=1.0">
+    <title>Formulário</title>
+    <script>
+        function verificar() {
+            vet_inputs = document.getElementsByTagName("input");
+            var options = document.querySelectorAll("input[name=option]:checked");
+            var opSexual;
+            opSexual = document.getElementById("sexoId").value;
+            for (i = 0; i < vet_inputs.length; i++) {
+                if (vet_inputs[i].type == "text" && "radio") {
+                    if (vet_inputs[i].value == "")
+                        alert(`Campo ${i + 1} esta vazio`);
+                }
+            }
+            if (options.length < 1) {
+                alert("Selecione uma das opções de residência");
+            }
+            if ((opSexual == "") || (opSexual == null)) {
+                alert("Selecione uma opção do sexo");
+                return false;
+            }
+            if (tx_mensagem.value.length < 50) {
+                alert("Descreva um pouco de como você deseja que seja o seu imóvel!");
+                tx_mensagem.focus();
+                return false;
+            }
+            else {
+                alert("Enviado!")
+            }
+        }
+        function limpaCampos() {
+            document.getElementById("txtnome").value = "";
+            document.getElementById("txtcpf").value = "";
+            document.getElementById("txtcidade").value = "";
+            document.getElementById("txtestado").value = "";
+            document.getElementById("txtpais").value = "";
+            document.getElementById("sexoId").value = "";
+            document.getElementById("tx_mensagem").value = "";
+            document.getElementById("txsim").checked = false;
+            document.getElementById("txnao").checked = false;
+        }
+    </script>
+    <style>
+        body {
+            background-color: #2F4F4F;
+        }
+
+        .form {
+            width: 45%;
+            height: 90%;
+            background-color: #708090;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateY(-50%) translateX(-50%);
+            padding-left: 30px;
+        }
+
+        h1 {
+            margin-left: auto;
+            margin-right: auto;
+            width: 6em;
+            margin-bottom: 35px;
+        }
+
+        input {
+            margin: 2px;
+        }
+
+        select {
+            margin-top: 15px;
+        }
+
+        h3 {
+            margin: 15px 0px;
+        }
+
+        label {
+            display: inline-block;
+            width: 55px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="form">
+        <h1>Formulário</h1>
+        <form>
+            <label>Nome:</label>
+            <input type="text" id="txtnome" />
+            <br />
+            <label>CPF:</label>
+            <input type="text" id="txtcpf" maxlength="11" />
+            <br />
+            <label>Cidade:</label>
+            <input type="text" id="txtcidade" />
+            <br />
+            <label>Estado:</label>
+            <input type="text" id="txtestado" />
+            <br />
+            <label>Pais:</label>
+            <input type="text" id="txtpais" />
+            <br />
+            <select name="sexo" id="sexoId">
+                <option value="">Sexo</option>
+                <option value="masculino">Masculino</option>
+                <option value="feminino">Feminino</option>
+                <option value="nInformado">Não informar</option>
+            </select>
+            <h3>Possui residência propria:</h3>
+            <input type="radio" name="option" value="sim" id="txsim" />Sim<br />
+            <input type="radio" name="option" value="nao" id="txnao" />Não<br />
+            <br/>
+            <h3>Como você gostaria que fosse o seu imóvel:</h3>
+            <textarea name="tx_mensagem" id="tx_mensagem" rows="5" cols="40">
+            </textarea>  
+             <br/>
+            <input type="button" value="Enviar" onclick="verificar()" />
+            <input type="button" value="Limpar" onclick="limpaCampos()" />
         </form>
     </div>
 </body>
