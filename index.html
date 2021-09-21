@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -41,6 +42,8 @@
             document.getElementById("txtpais").value = "";
             document.getElementById("sexoId").value = "";
             document.getElementById("tx_mensagem").value = "";
+            document.getElementById("txsim").checked = false;
+            document.getElementById("txnao").checked = false;
         }
     </script>
     <style>
@@ -111,16 +114,17 @@
                 <option value="nInformado">Não informar</option>
             </select>
             <h3>Possui residência propria:</h3>
-            <input type="radio" name="option" value="sim" />Sim<br />
-            <input type="radio" name="option" value="nao" />Não<br />
+            <input type="radio" name="option" value="sim" id="txsim" />Sim<br />
+            <input type="radio" name="option" value="nao" id="txnao" />Não<br />
             <br />
             <h3>Como você gostaria que fosse o seu imóvel:</h3>
             <textarea name="tx_mensagem" id="tx_mensagem" rows="5" cols="40">
-            </textarea>  
-             <br />
+</textarea>
+            <br />
             <input type="button" value="Enviar" onclick="verificar()" />
-            <input type="button" value="Limpar" onclick="limpaCampos()">
+            <input type="button" value="Limpar" onclick="limpaCampos()" />
         </form>
     </div>
 </body>
+
 </html>
